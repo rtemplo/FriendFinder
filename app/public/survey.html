@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>I&F Survey</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="sticky-footer-nav.css">
+	<link rel="stylesheet" href="likert.css">
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Ice & Fire Dating</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/survey">Take a Survey</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+     
+      <div class="row text-center text-lg-left">
+		<div class="w-100">
+		 <h3 class="likert-header">Please answer the following questions</h3>
+		 <hr>
+	  
+		  <form action="" name="surveyForm">
+			<div class="input-group input-group-lg mt-3">
+			  <span class="input-group-addon" id="respondent-name-lbl">Your Name:</span>
+			  <input type="text" name="respondent-name" class="form-control" placeholder="" aria-label="Name" aria-describedby="respodent-name-lbl">
+			</div>
+
+			<div class="input-group input-group-lg mt-2">
+			  <span class="input-group-addon" id="respondent-img-lbl">Your Image URL:</span>
+			  <input type="text" name="respondent-img" class="form-control" placeholder="" aria-label="Name" aria-describedby="respodent-img-lbl">
+			</div>
+  		
+	  		<hr>
+	  				  
+		  	<div id="question-layer">
+<!--
+				<label class="statement">This HTML Likert scale is easy to use.</label>
+				<ul class='likert'>
+				  <li><label for="q-1-1"><input type="radio" id="q-1-1" name="ques-1" value="1">Strongly Disagree</label></li>
+				  <li><label for="q-1-2"><input type="radio" id="q-1-2" name="ques-1" value="2">Disagree</label></li>
+				  <li><label for="q-1-3"><input type="radio" id="q-1-3" name="ques-1" value="3">Neutral</label></li>
+				  <li><label for="q-1-4"><input type="radio" id="q-1-4" name="ques-1" value="4">Agree</label></li>
+				  <li><label for="q-1-5"><input type="radio" id="q-1-5" name="ques-1" value="5">Strongly Agree</label></li>
+				</ul>
+
+				<label class="statement">It's clear that this is a responsive design.</label>
+				<ul class='likert'>
+				  <li><label for="q-2-1"><input type="radio" id="q-2-1" name="ques-2" value="1">Strongly Disagree</label></li>
+				  <li><label for="q-2-2"><input type="radio" id="q-2-2" name="ques-2" value="2">Disagree</label></li>
+				  <li><label for="q-2-3"><input type="radio" id="q-2-3" name="ques-2" value="3">Neutral</label></li>
+				  <li><label for="q-2-4"><input type="radio" id="q-2-4" name="ques-2" value="4">Agree</label></li>
+				  <li><label for="q-2-5"><input type="radio" id="q-2-5" name="ques-2" value="5">Strongly Agree</label></li>
+				</ul>
+-->
+			</div>
+			
+			<div id="form-controls" class="buttons flex-column text-center">
+			  <button class="clear" type="reset">Clear</button>
+			  <button class="submit" id="surv-submit">Submit</button>
+			</div>
+		  </form>
+		</div>     
+     
+     
+     
+     
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"><a href="/api/friends">API Friends List</a></span>
+      </div>
+    </footer>    
+    
+	<!-- Modal -->
+	<div id="resultsModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h2 class="modal-title"><strong>Your Best Match</strong></h2>
+	      </div>
+	      <div class="modal-body">
+	        <h2 id="matchName"></h2>
+	        <img id="matchImg" src="http://via.placeholder.com/320x400" alt="">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>    
+
+    <!-- Bootstrap core JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> 
+
+	<script type="text/javascript">
+	var questionData = ["Your mind is always buzzing with unexplored ideas and plans.","Generally speaking, you rely more on your experience than your imagination.","You find it easy to stay relaxed and focused even when there is some pressure.","You rarely do something just out of sheer curiosity.","People can rarely upset you.","It is often difficult for you to relate to other people’s feelings.","In a discussion, truth should be more important than people’s sensitivities.","You rarely get carried away by fantasies and ideas.","You think that everyone’s views should be respected regardless of whether they are supported by facts or not.","You feel more energetic after spending time with a group of people."];
+		
+	function writeQuestion(quesNo, quesText) {
+		var quesID = quesNo + 1; //offset 0 based array
+		var strQuesHTML = `<label id="lbl-`+quesID+`" class="statement">`+quesText+`</label>
+						   <ul class='likert'>`
+		
+		//wrtie the five basic responses on the likert scale
+		for (var i=1; i < 6; i++) {
+			var labelText;
+			switch (i) {
+				case 1:
+					labelText = "Strongly Disagree";
+					break;
+				case 2:
+					labelText = "Disagree";
+					break;
+				case 3:
+					labelText = "Neutral";
+					break;
+				case 4:
+					labelText = "Agree";
+					break;
+				case 5:
+					labelText = "Strongly Agree";
+					break;					
+			}
+			
+			strQuesHTML += `<li><label for="q-`+quesID+`-`+i+`"><input type="radio" id="q-`+quesID+`-`+i+`" name="ques-`+quesID+`" value="`+i+`">`+labelText+`</label></li>`
+		}
+		
+		strQuesHTML +=	`</ul>`;
+		return strQuesHTML;
+	}
+		
+	$(document).ready(function () {
+		var url = window.location.origin;
+		
+		$.getJSON("/api/surveyquestions", function (questionData) {
+			for (var i=0; i < questionData.length; i++) {
+				$("#question-layer").append(writeQuestion(i, questionData[i]));
+			}			
+		});
+		
+		
+		$("#surv-submit").click(function () {
+			var incompleteArr = []; //will hold the names of incomplete form inputs and radios
+
+			$.each($("form[name=surveyForm] input[type=text]"), function () {
+				if ($.inArray(this.name, incompleteArr) < 0 ) {
+					if (!$.trim($(this).val())) incompleteArr.push(this.name); 
+				}
+			});		
+
+			$.each($("form[name=surveyForm] input:radio"), function () {
+				if ($.inArray(this.name, incompleteArr) < 0 ) {
+					if (!$("input:radio[name=" + this.name + "]:checked").val()) incompleteArr.push(this.name); 
+				}
+			});
+
+			if (incompleteArr.length > 0) {
+				//loop through here and change the css of all the incomplete elements
+				alert("The survey is incomplete. Please answer all questions.");
+			} else {
+				//summate all the values in the form
+				var formData = $("form[name=surveyForm]").serializeArray();
+
+				//first two values are the name and the image url
+				//	the remaining values are the answers to the likert scale radio groups
+				//	An IIFE in the score property is used to auto generate the scores.
+				//	The scores was meant to be an array but body-parser is being a jerk and converting the array of ints to an array of strings.
+				// 	I messed around with the encoding and the json in the app.use statements to no avail. So as it stands the string numbers being passed as the score property will need to be reconverted to an array of integers server side.
+				var userResponses = {
+					name: formData[0].value.trim(),
+					photo: formData[1].value.trim(),
+					scores: (function(){
+						var scoresArr = [];
+						for (var i = 2; i < formData.length; i++) {
+							scoresArr.push(parseInt(formData[i].value));
+						}
+						console.log(scoresArr);
+						return scoresArr.join(",");
+					})()
+				}
+
+				$.post(url + "/api/friends", userResponses, function(matchData){
+					$("#matchName").text(matchData.name);
+					$('#matchImg').attr("src", matchData.photo);
+					$("#resultsModal").modal('toggle');
+					console.log("POSTED TO: " + url + "/api/friends");
+				});			
+			}
+
+			return false;
+			
+		}); //#surv-submit click
+		
+	});
+		
+	</script>
+
+  </body>
+
+</html>
